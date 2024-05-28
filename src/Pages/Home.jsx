@@ -1,22 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import HomeInput from "./HomeInput";
+import Month from "./Month";
+import ExpenseList from "./ExpenseList";
 
 const Contain = styled.div`
-  width: 1200px;
-  height: 800px;
-  background-color: lightgreen;
+  width: 100%;
+  height: 1080px;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Title = styled.h1`
-  font-size: 20px;
-  color: #888;
-`;
-
-function Home() {
+function Home({ selectedMonth, setSelectedMonth }) {
   return (
     <>
       <Contain>
-        <Title>Home</Title>
+        <HomeInput />
+        <Month
+          selectedMonth={selectedMonth}
+          setSelectedMonth={setSelectedMonth}
+        />
+        <ExpenseList />
       </Contain>
     </>
   );
