@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const InputBox = styled.div`
   width: 1050px;
@@ -22,7 +23,7 @@ const Save = styled.button`
   margin-left: 0.5rem;
 `;
 
-function HomeInput() {
+function HomeInput({ onAddExpense }) {
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState("");
@@ -34,34 +35,47 @@ function HomeInput() {
       alert("각각 항목을 입력해주세요");
       return;
     }
-    console.log("완료되었습니다", { date, item, amount, content });
+
+    const newExpnese = {
+      id: uuidv4(),
+      date,
+      item,
+      amount,
+      content: cont,
+    };
+
+    onAddExpense(newExpense);
+    setDate("");
+    setItem("");
+    setAmount("");
+    setContent("");
   };
 
   return (
     <>
       <InputBox>
-        날짜{" "}
+        날짜
         <input
           type="text"
           placeholder="xxxx-yy-dd"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        항목{" "}
+        항목
         <input
           type="text"
           placeholder="지출 항목"
           value={item}
           onChange={(e) => setItem(e.target.value)}
         />
-        금액{" "}
+        금액
         <input
           type="number"
           placeholder="지출 금액"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-        내용{" "}
+        내용
         <input
           type="text"
           placeholder="지출 내용"

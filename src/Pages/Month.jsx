@@ -14,7 +14,7 @@ const MonthButton = styled.button`
   width: 104px;
   height: 60px;
   border-radius: 8px;
-  background-color: #a6e3e9;
+  background-color: ${({ isSelected }) => (isSelected ? "#E3FDFD" : "#a6e3e9")};
   border: none;
   font-size: 20px;
   align-items: center;
@@ -26,22 +26,34 @@ const MonthButton = styled.button`
   cursor: pointer;
 `;
 
-function Month() {
+function Month({ selectedMonth, setSelectedMonth }) {
+  const months = [
+    "1월",
+    "2월",
+    "3월",
+    "4월",
+    "5월",
+    "6월",
+    "7월",
+    "8월",
+    "9월",
+    "10월",
+    "11월",
+    "12월",
+  ];
+
   return (
     <>
       <Monthbox>
-        <MonthButton>1월</MonthButton>
-        <MonthButton>2월</MonthButton>
-        <MonthButton>3월</MonthButton>
-        <MonthButton>4월</MonthButton>
-        <MonthButton>5월</MonthButton>
-        <MonthButton>6월</MonthButton>
-        <MonthButton>7월</MonthButton>
-        <MonthButton>8월</MonthButton>
-        <MonthButton>9월</MonthButton>
-        <MonthButton>10월</MonthButton>
-        <MonthButton>11월</MonthButton>
-        <MonthButton>12월</MonthButton>
+        {months.map(() => (
+          <MonthButton
+            key={index}
+            isSelected={selectedMonth}
+            onClick={() => setSelectedMonth(month)}
+          >
+            {month}
+          </MonthButton>
+        ))}
       </Monthbox>
     </>
   );

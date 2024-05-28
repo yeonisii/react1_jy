@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import HomeInput from "./HomeInput";
 import Month from "./Month";
@@ -11,16 +11,22 @@ const Contain = styled.div`
   justify-content: center;
 `;
 
-function Home({ selectedMonth, setSelectedMonth }) {
+function Home() {
+  const [expenses, setExpenses] = useState([]);
+  const [selectedMonth, setSelectedMonth] = useState("");
+
+  const addExpense = (expense) => {
+    setExpenses((prevExpnses) => [...prevExpnses, expense]);
+  };
   return (
     <>
       <Contain>
-        <HomeInput />
+        <HomeInput onAddExpense={addExpense} />
         <Month
           selectedMonth={selectedMonth}
           setSelectedMonth={setSelectedMonth}
         />
-        <ExpenseList />
+        <ExpenseList expenses={expenses} />
       </Contain>
     </>
   );
