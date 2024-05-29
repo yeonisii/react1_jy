@@ -12,30 +12,8 @@ const DivBox = styled.div`
   border-radius: 15px;
 `;
 
-const ExpenseItem = styled.div`
-  width: 100%;
-  height: 25px;
-  background-color: #f2f2f2;
-  border-bottom: 1px solid #ccc;
-`;
-
-function ExpenseList({ expenses }) {
-  return (
-    <DivBox>
-      {expenses.length === 0 ? (
-        <p>지출 내역이 없습니다</p>
-      ) : (
-        expenses.map((expense) => (
-          <ExpenseItem key={expense.id}>
-            <span>{expense.date}</span>
-            <span>{expense.item}</span>
-            <span>{expense.amount}</span>
-            <span>{expense.content}</span>
-          </ExpenseItem>
-        ))
-      )}
-    </DivBox>
-  );
+function ExpenseList() {
+  return <DivBox></DivBox>;
 }
 
 export default ExpenseList;

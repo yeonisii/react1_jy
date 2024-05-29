@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
 
 const InputBox = styled.div`
   width: 1050px;
@@ -23,32 +22,13 @@ const Save = styled.button`
   margin-left: 0.5rem;
 `;
 
-function HomeInput({ onAddExpense }) {
-  const [date, setDate] = useState("");
-  const [item, setItem] = useState("");
-  const [amount, setAmount] = useState("");
-  const [content, setContent] = useState("");
-
+function HomeInput() {
   // 유효성 검사
   const save = () => {
     if (!date || !item || !amount || !content) {
       alert("각각 항목을 입력해주세요");
       return;
     }
-
-    const newExpnese = {
-      id: uuidv4(),
-      date,
-      item,
-      amount,
-      content: cont,
-    };
-
-    onAddExpense(newExpense);
-    setDate("");
-    setItem("");
-    setAmount("");
-    setContent("");
   };
 
   return (
